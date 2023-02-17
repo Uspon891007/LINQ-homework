@@ -13,8 +13,18 @@ namespace test
         static void Main(string[] args)
         {
             List<Product> products = CreateList();
-            var total = products.Sum((x) => x.price);
-            Console.WriteLine($"所有商品的總價格:{total}");
+            var totalOfprice = products.Sum((x) => x.price);
+            Console.WriteLine($"所有商品的總價格:{totalOfprice}");
+            var average = products.Average((x) => x.price);
+            Console.WriteLine($"所有商品價格的平均:{average:N}");
+            var totalOfproducts = products.Sum(x => x.quantity);
+            Console.WriteLine($"商品的總數量:{totalOfproducts}");
+            var averageOfproducts = products.Average((x) => x.quantity);
+            Console.WriteLine($"商品的平均數量:{averageOfproducts}");
+            var max = products.Max((x) => x.price);
+            Console.WriteLine(max);
+            var maxOfproducts = products.SingleOrDefault(x => x.price == max);
+            Console.WriteLine(maxOfproducts.Id);
 
 
 
