@@ -31,10 +31,10 @@ namespace _1A2B
                         computers[j] = computer.Next(0, 10);
                     }
                 }
-                Console.WriteLine(computers[0]);
-                Console.WriteLine(computers[1]);
-                Console.WriteLine(computers[2]);
-                Console.WriteLine(computers[3]);
+                //Console.WriteLine(computers[0]);
+                //Console.WriteLine(computers[1]);
+                //Console.WriteLine(computers[2]);
+                //Console.WriteLine(computers[3]);
                 do
                 {
                     Console.WriteLine("請輸入4個數字");
