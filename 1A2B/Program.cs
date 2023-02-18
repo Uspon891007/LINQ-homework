@@ -22,19 +22,19 @@ namespace _1A2B
                 {
                     computers[i] = computer.Next(0, 10);
                 }
-                var yyy = all.Intersect(computers);
+                var allintersectcomputers = all.Intersect(computers);
 
-                while (yyy.Count() < 4)
+                while (allintersectcomputers.Count() < 4)
                 {
                     for (int j = 0; j < 4; j++)
                     {
                         computers[j] = computer.Next(0, 10);
                     }
                 }
-                //Console.WriteLine(computers[0]);
-                //Console.WriteLine(computers[1]);
-                //Console.WriteLine(computers[2]);
-                //Console.WriteLine(computers[3]);
+                Console.WriteLine(computers[0]);
+                Console.WriteLine(computers[1]);
+                Console.WriteLine(computers[2]);
+                Console.WriteLine(computers[3]);
                 do
                 {
                     Console.WriteLine("請輸入4個數字");
@@ -46,19 +46,19 @@ namespace _1A2B
                     players[3] = player % 10;
                     A = 0;
                     B = 0;
-                    bool yes;
+                    bool same;
 
                     for (int i = 0; i < 4; i++)
                     {
-                        yes = players[i].Equals(computers[i]);
-                        if (yes)
+                        same = players[i].Equals(computers[i]);
+                        if (same)
                         {
                             A++;
                         }
                     }
                     var b = players.Intersect(computers);
-                    var BB = b.Count();
-                    B = BB - A;
+                    var playersOfB = b.Count();
+                    B = playersOfB - A;
                     Console.WriteLine($"{A}A{B}B");
                     Console.WriteLine("---------------------");
                 } while (A != 4);
