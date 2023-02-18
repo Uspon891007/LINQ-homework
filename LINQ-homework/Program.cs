@@ -28,7 +28,7 @@ namespace LINQ_homework
                     Console.WriteLine($"3.商品的總數量:{totalOfproducts}");
                     var averageOfproducts = products.Average((x) => x.quantity);
                     Console.WriteLine($"4.商品的平均數量:{averageOfproducts:0}");
-
+                    Console.WriteLine("-----------------------------------------");
                 }
 
                 else if (page == "2")
@@ -54,10 +54,10 @@ namespace LINQ_homework
                         if (item.Key == "飲料")
                         {
                             var totalpriceOfdrink = item.Sum((x) => x.price);
-                            Console.WriteLine($"8.商品類別為飲料的總價:{totalpriceOfdrink}");
+                            Console.WriteLine($"8-1.商品類別為飲料的總價:{totalpriceOfdrink}");
                         }
                     }
-
+                    Console.WriteLine("-----------------------------------------");
                 }
 
 
@@ -70,8 +70,8 @@ namespace LINQ_homework
                         if (item.Key == "食品")
                         {
                             var totalpriceOfeat = item.Sum((x) => x.price);
-                            Console.WriteLine($"9.商品類別為食品的總價:{totalpriceOfeat}");
-                            Console.WriteLine("10.商品類別為食品且數量超過100:");
+                            Console.WriteLine($"8-2.商品類別為食品的總價:{totalpriceOfeat}");
+                            Console.WriteLine("9.商品類別為食品且數量超過100:");
                             foreach (var eat in item)
                             {
                                 if (eat.quantity > 100)
@@ -85,7 +85,7 @@ namespace LINQ_homework
                     var allOfpricemore1000 = products.GroupBy((x) => x.category);
                     foreach (var item in allOfpricemore1000)
                     {
-                        Console.WriteLine($"11.商品為{item.Key}且價格大於1000:");
+                        Console.WriteLine($"10.商品為{item.Key}且價格大於1000:");
                         foreach (var pricemore1000 in item)
                         {
                             if (pricemore1000.price > 1000)
@@ -98,28 +98,28 @@ namespace LINQ_homework
                     var allOfpriceAverage = products.GroupBy((x) => x.category);
                     foreach (var item in allOfpriceAverage)
                     {
-                        Console.WriteLine($"12.商品:{item.Key}");
+                        Console.WriteLine($"11.商品:{item.Key}");
                         var priceAverage = item.Average((x) => x.price);
                         Console.WriteLine($"平均價格為{priceAverage:0}");
                     }
-
+                    Console.WriteLine("-----------------------------------------");
                 }
 
 
                 else if (page == "4")
                 {
-                    var order1 = products.OrderBy((x) => x.Name).ThenBy((x) => x.price);
-                    Console.WriteLine("13.商品價格由大到小:");
+                    var order1 = products.OrderByDescending((x) => x.price);
+                    Console.WriteLine("12.商品價格由大到小:");
                     Display(order1);
 
-                    var order2 = products.OrderByDescending((x) => x.Name).ThenByDescending((x) => x.quantity);
-                    Console.WriteLine("14.商品數量由小到大:");
-                    Display(order1);
+                    var order2 = products.OrderBy((x) => x.quantity);
+                    Console.WriteLine("13.商品數量由小到大:");
+                    Display(order2);
 
                     var allproductOfmax = products.GroupBy((x) => x.category);
                     foreach (var item in allproductOfmax)
                     {
-                        Console.WriteLine($"15.商品類別{item.Key}最貴為:");
+                        Console.WriteLine($"14.商品類別{item.Key}最貴為:");
                         var productOfmax = item.Max((x) => x.price);
                         foreach (var bbb in item)
                         {
@@ -129,6 +129,23 @@ namespace LINQ_homework
                             }
                         }
                     }
+                    var allproductOfmin = products.GroupBy((x) => x.category);
+                    foreach (var item in allproductOfmin)
+                    {
+                        Console.WriteLine($"15.商品類別{item.Key}最便宜為:");
+                        var productOfmin = item.Max((x) => x.price);
+                        foreach (var min in item)
+                        {
+                            if (min.price == productOfmin)
+                            {
+                                Console.WriteLine(min.Name);
+                            }
+                        }
+                    }
+                    Console.WriteLine("-----------------------------------------");
+                }
+                else if (page == "5")
+                {
 
                     Console.WriteLine("16.商品價格超過10000的有:");
                     foreach (var item in products)
@@ -138,8 +155,10 @@ namespace LINQ_homework
                             Console.WriteLine(item.Name);
                         }
                     }
-
+                    Console.WriteLine("-----------------------------------------");
                 }
+
+                
 
                 else
                 {
